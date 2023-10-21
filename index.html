@@ -1,0 +1,50 @@
+<div
+    style="position: absolute; background-color: black; height: calc(100% - 15px); width: calc(100% - 17px); z-index: -5;">
+</div>
+
+<div style="display: flex; gap: 50px; flex-wrap: wrap; position: absolute; width: calc(100% - 17px); backdrop-filter: blur(10px); height: 100%; padding-left: 30px; padding-top: 30px; z-index: 10;"
+    id="languageSelect">
+    <button
+        style="background-color: #1f1f1f; height: 440px; width: calc(50% - 55px); border-radius: 50px; color: white; font-size: 150px;"
+        onclick="languageClick('en')">🏴</button>
+    <button
+        style="background-color: #1f1f1f; height: 440px; width: calc(50% - 55px); border-radius: 50px; color: white; font-size: 150px"
+        onclick="languageClick('fr')">🏁</button>
+</div>
+
+<input type="text"
+    style="position: absolute; width: 75%; font-size: 75px; left: 115px; top: 50px; background-color: #1f1f1f; color: white;"
+    id="patientName">
+
+<div style="position: absolute; display:flex; top: 200px; left: 40px;" id="urgencySelection">
+    <button
+        style="width: 180px; height: 180px; font-size: 50px; border-radius: 50px; background-color: #000000; border-style: none"
+        onclick="urgencySelection(1)" id="urgencySelection1"><img src="./1.png"
+            style="height:calc(100% - 20px);"></button>
+    <button
+        style="width: 180px; height: 180px; font-size: 50px; border-radius: 50px; background-color: #000000; border-style: none"
+        onclick="urgencySelection(2)" id="urgencySelection2"><img src="./2.png"
+            style="height:calc(100% - 20px);"></button>
+    <button
+        style="width: 180px; height: 180px; font-size: 50px; border-radius: 50px; background-color: #000000; border-style: none"
+        onclick="urgencySelection(3)" id="urgencySelection3"><img src="./3.png"
+            style="height:calc(100% - 20px);"></button>
+    <button
+        style="width: 180px; height: 180px; font-size: 50px; border-radius: 50px; background-color: #000000; border-style: none"
+        onclick="urgencySelection(4)" id="urgencySelection4"><img src="./4.png"
+            style="height:calc(100% - 20px);"></button>
+    <button
+        style="width: 180px; height: 180px; font-size: 50px; border-radius: 50px; background-color: #000000; border-style: none"
+        onclick="urgencySelection(5)" id="urgencySelection5"><img src="./5.png"
+            style="height:calc(100% - 20px);"></button>
+</div>
+
+<div id="bodySelection" style="position: absolute; height: 1500px; width: 100%; top: 450px;">
+    <center><img src="./bodydiagram.png" style="height:90%; padding-top: 5%; padding-bottom: 5%;"></center>
+</div>
+
+<button
+    style="position: absolute; height: 100px; width: 500px; font-size: 50px; z-index: 5; bottom:70; left: 240px; background-color: #1f1f1f; color: white;"
+    onclick="submitForm()">Submit</button>
+
+<script src="./script.js"></script>

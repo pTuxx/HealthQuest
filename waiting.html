@@ -1,0 +1,53 @@
+<div style="display: flex; position: absolute; backdrop-filter: blur(50px); width: 100%; height: 100%; top: 0; left: 0; z-index: 10; color: white; font-size: 50px; align-items: center; justify-content: center;"
+    id="cancelConfirmScreen">
+    <h1>We Advise<br>Not To Leave</h1>
+</div>
+
+<div style="height: 100%; position: absolute; display: flex; align-items: flex-end; justify-content: center; z-index: 11; width: 100%; bottom: 250px"
+    id="leaveButton">
+    <button
+        style="height:200px; width: 750px; font-size: 100px; margin-bottom: 100px; background-color: #1f1f1f; color: white;"
+        onclick="leaveButton()">Leave</button>
+</div>
+
+<div style="height: 100%; position: absolute; display: flex; align-items: flex-end; justify-content: center; z-index: 10; width: 100%;"
+    id="backButton">
+    <button
+        style="height:200px; width: 750px; font-size: 100px; margin-bottom: 100px; background-color: #1f1f1f; color: white;"
+        onclick="backButton()">Back</button>
+</div>
+
+<div
+    style="display: flex; position: absolute; width: calc(100% - 16px); height: 75%; color: white; justify-content: center; flex-wrap: wrap; z-index: 5;">
+    <h1 style="font-size: 100px; padding-top: 150px; height: 50px;">Estimated<br>Wait Time:</h1>
+    <br>
+    <h1 style="font-size: 100px; width: 100%; text-align: center;">5:00:00</h1>
+</div>
+
+<div style="height: 100%; display: flex; background-color: black; align-items: flex-end; justify-content: center;">
+    <button
+        style="height:200px; width: 750px; font-size: 100px; margin-bottom: 100px; background-color: #1f1f1f; color: white;"
+        onclick="cancelButton()">Cancel</button>
+</div>
+
+<script>
+    document.getElementById("backButton").style.display = "none"
+    document.getElementById("leaveButton").style.display = "none"
+    document.getElementById("cancelConfirmScreen").style.display = "none"
+
+    function cancelButton() {
+        document.getElementById("cancelConfirmScreen").style.display = "flex"
+        document.getElementById("backButton").style.display = "flex"
+        document.getElementById("leaveButton").style.display = "flex"
+    }
+
+    function backButton() {
+        document.getElementById("backButton").style.display = "none"
+        document.getElementById("leaveButton").style.display = "none"
+        document.getElementById("cancelConfirmScreen").style.display = "none"
+    }
+
+    function leaveButton() {
+        window.location.href = window.location.protocol + "/"
+    }
+</script>

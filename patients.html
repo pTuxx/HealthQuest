@@ -1,0 +1,32 @@
+<div id="patientCards" style="display: flex; color: white; font-size: 50px; gap: 10px">
+    <div style="width: 100%; min-height: 1000px; background-color: #1f1f1f; padding: 50px">
+        <p>Name: HHH</p>
+        <p>Urgency: 5</p>
+        <img src="./bodydiagram.png" style="height: 1448px">
+    </div>
+    <div style="width: 100%; min-height: 1000px; background-color: #1f1f1f; padding: 50px">
+        <p>Name: HHH</p>
+        <p>Urgency: 5</p>
+        <img src="./bodydiagram.png" style="height: 1448px">
+    </div>
+</div>
+
+<script>
+    fetch("http://localhost:3000/patients.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        }
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            for (i in data) {
+                pat = data[i]
+
+                card = document.createElement("div")
+
+
+                document.getElementById("patientCards").appendChild(card)
+            }
+        })
+</script>
