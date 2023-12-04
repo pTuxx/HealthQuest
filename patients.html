@@ -1,17 +1,50 @@
-<div id="patientCards" style="display: flex; color: white; font-size: 50px; gap: 10px">
-    <div style="width: 100%; min-height: 1000px; background-color: #1f1f1f; padding: 50px">
-        <p>Name: HHH</p>
-        <p>Urgency: 5</p>
-        <img src="./bodydiagram.png" style="height: 1448px">
-    </div>
-    <div style="width: 100%; min-height: 1000px; background-color: #1f1f1f; padding: 50px">
-        <p>Name: HHH</p>
-        <p>Urgency: 5</p>
-        <img src="./bodydiagram.png" style="height: 1448px">
-    </div>
+<div
+    style="position: absolute; background-color: black; height: calc(100% - 15px); width: calc(100% - 17px); z-index: -5;">
+</div>
+<p style="position: absolute; width: 75%; font-size: 75px; left: 115px; top: 50px; background-color: #1f1f1f; color: white;"
+    id="patientName"></p>
+
+<div id="bodySelection" style="position: absolute; height: 1500px; width: 100%; top: 450px;">
+    <center><img src="./bodydiagram.png" style="height:90%; padding-top: 5%; padding-bottom: 5%;"></center>
 </div>
 
+<button
+    style="position: absolute; height: 100px; width: 250px; font-size: 50px; z-index: 5; bottom:70; left: 240px; background-color: #1f1f1f; color: white;"
+    onclick="prevPatient()">&lt</button>
+
+<button
+    style="position: absolute; height: 100px; width: 250px; font-size: 50px; z-index: 5; bottom:70; left: 490px; background-color: #1f1f1f; color: white;"
+    onclick="nextPatient()">&gt</button>
+
 <script>
+    let params = new URLSearchParams(document.location.search);
+    let i = parseInt(params.get("p"));
+
+    function nextPatient() {
+        fetch("http://localhost:3000/patients.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8"
+            }
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if ((i + 1) < data.length) {
+                    i++
+
+                    window.location.search = "p=" + i
+                }
+            })
+    }
+
+    function prevPatient() {
+        if ((i - 1) >= 0) {
+            i--
+
+            window.location.search = "p=" + i
+        }
+    }
+
     fetch("http://localhost:3000/patients.php", {
         method: "POST",
         headers: {
@@ -20,13 +53,24 @@
     })
         .then((response) => response.json())
         .then((data) => {
-            for (i in data) {
-                pat = data[i]
+            pat = data[i]
 
-                card = document.createElement("div")
+            document.getElementById("patientName").innerHTML = pat["urgency"] + ": " + pat["name"]
 
+            for (let n = 0; n < pat['points'].length; n++) {
+                var xPosition = pat['points'][n][0] - 24
+                var yPosition = pat['points'][n][1] - 22
 
-                document.getElementById("patientCards").appendChild(card)
+                let circle = document.createElement("div")
+                circle.style.backgroundColor = "#ff0000"
+                circle.style.height = "50px"
+                circle.style.width = "50px"
+                circle.style.position = "absolute"
+                circle.style.top = yPosition
+                circle.style.left = xPosition
+                circle.style.borderRadius = "100%"
+
+                bodySelection.appendChild(circle)
             }
         })
 </script>
